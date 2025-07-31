@@ -17,9 +17,9 @@ jobs:
         id: versions
         run: |
           tor_version=$(wget -q -O- 'https://gitlab.torproject.org/tpo/core/tor/-/tags?format=atom' \
-            | grep -oP '(?<=<title>tor-)\d+(\.\d+)*' | sort -V -r | head -n1)
+            | grep -oP '(?<=<title>tor-)\d+(\.\d+)*(?=</title>)' | sort -V -r | head -n1)
           lyrebird_version=$(wget -q -O- 'https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird/-/tags?format=atom' \
-            | grep -oP '(?<=<title>lyrebird-)\d+(\.\d+)*' | sort -V -r | head -n1)
+            | grep -oP '(?<=<title>lyrebird-)\d+(\.\d+)*(?=</title>)' | sort -V -r | head -n1)
 
           echo "tor_tag=tor-$tor_version" >> $GITHUB_OUTPUT
           echo "lyrebird_tag=lyrebird-$lyrebird_version" >> $GITHUB_OUTPUT
