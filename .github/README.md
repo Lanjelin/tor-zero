@@ -3,7 +3,7 @@
 A secure, zero-footprint Docker image for running Tor, optionally with the Lyrebird pluggable transport — fully rootless, distroless, and built entirely `FROM scratch` for maximum isolation and minimal attack surface.
 
 Hosted image:\
-📦 [`ghcr.io/Lanjelin/tor-zero`](https://ghcr.io/Lanjelin/tor-zero)
+📦 [`ghcr.io/lanjelin/tor-zero`](https://ghcr.io/lanjelin/tor-zero)
 
 ---
 
@@ -46,7 +46,7 @@ Then run:
 docker run --rm \
   -v "$(pwd)/tor:/tor" \
   -p 9050:9050 \
-  ghcr.io/Lanjelin/tor-zero \
+  ghcr.io/lanjelin/tor-zero \
   -f /tor/torrc
 ```
 
@@ -67,7 +67,7 @@ You can also run the container using Docker Compose:
 ```yaml
 services:
   tor:
-    image: ghcr.io/Lanjelin/tor-zero
+    image: ghcr.io/lanjelin/tor-zero
     user: "1000:1000"
     volumes:
       - ./tor:/tor
@@ -137,7 +137,7 @@ Tor and Lyrebird are licensed under their respective open source licenses. This 
 ## 👤 Maintainer
 
 **Lanjelin**\
-Image hosted at [ghcr.io/Lanjelin/tor-zero](https://ghcr.io/Lanjelin/tor-zero)
+Image hosted at [ghcr.io/lanjelin/tor-zero](https://ghcr.io/lanjelin/tor-zero)
 
 ---
 

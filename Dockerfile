@@ -129,7 +129,7 @@ RUN git clone --depth=1 $lyrebird_url && \
 FROM scratch
 LABEL org.opencontainers.image.title="tor-zero" \
       org.opencontainers.image.description="A rootless, distroless, from-scratch Docker image for running Tor with optional Lyrebird transport." \
-      org.opencontainers.image.url="https://ghcr.io/Lanjelin/tor-zero" \
+      org.opencontainers.image.url="https://ghcr.io/lanjelin/tor-zero" \
       org.opencontainers.image.source="https://github.com/Lanjelin/tor-zero" \
       org.opencontainers.image.documentation="https://github.com/Lanjelin/tor-zero" \
       org.opencontainers.image.version="0.4.8.17-0.6.1" \
