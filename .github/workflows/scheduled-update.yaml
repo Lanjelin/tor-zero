@@ -41,7 +41,7 @@ jobs:
           VERSION=${{ steps.versions.outputs.version }}
 
           # Check if tag already exists
-          if curl --silent --fail -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          if curl --silent --fail -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
             "https://ghcr.io/v2/lanjelin/tor-zero/manifests/$VERSION" > /dev/null; then
             echo "Image already exists for $VERSION. Skipping build."
             exit 0
