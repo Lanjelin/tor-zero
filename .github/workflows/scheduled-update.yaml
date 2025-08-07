@@ -41,7 +41,7 @@ jobs:
           VERSION=${{ steps.versions.outputs.version }}
 
           # Check if tag already exists
-          if docker manifest inspect "https://ghcr.io/v2/lanjelin/tor-zero/manifests/$VERSION" > /dev/null 2>&1; then
+          if docker manifest inspect "ghcr.io/lanjelin/tor-zero:$VERSION" > /dev/null 2>&1; then
             echo "Image already exists for $VERSION. Skipping build."
             exit 0
           fi
