@@ -21,10 +21,10 @@ This image is built with a focus on robust container hardening:
 
 ## 🧱 What's Inside?
 
-- ✅ [`tor`](https://gitlab.torproject.org/tpo/core/tor) `v0.4.8.17` — statically compiled with:
+- ✅ [`tor`](https://gitlab.torproject.org/tpo/core/tor) — statically compiled with:
   - `zlib`, `libevent`, `openssl`, `xz`, `zstd`
   - stripped binaries, no manpages, no unit tests
-- ✅ [`lyrebird`](https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird) `v0.6.1`
+- ✅ [`lyrebird`](https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird)
   - Go static build with `CGO_ENABLED=0`
 
 ---
