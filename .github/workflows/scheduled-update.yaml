@@ -2,7 +2,7 @@ name: Check and Build Latest Tor + Lyrebird
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # Every day at 03:00 UTC
+    - cron: "0 3 * * *" # Every day at 03:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -16,10 +16,18 @@ jobs:
       - name: Get latest Tor and Lyrebird versions
         id: versions
         run: |
-          tor_version=$(wget -q -O- 'https://gitlab.torproject.org/tpo/core/tor/-/tags?format=atom' \
-            | grep -oP '(?<=<title>tor-)\d+(\.\d+)*(?=</title>)' | sort -V -r | head -n1)
-          lyrebird_version=$(wget -q -O- 'https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird/-/tags?format=atom' \
-            | grep -oP '(?<=<title>lyrebird-)\d+(\.\d+)*(?=</title>)' | sort -V -r | head -n1)
+          tor_version=$(
+            curl -fsSL 'https://gitlab.torproject.org/api/v4/projects/tpo%2Fcore%2Ftor/repository/tags?per_page=100' |
+            jq -r '.[].name | select(test("^tor-[0-9]+(\\.[0-9]+)*$")) | sub("^tor-"; "")' |
+            sort -V -r |
+            head -n1
+          )
+          lyrebird_version=$(
+            curl -fsSL 'https://gitlab.torproject.org/api/v4/projects/tpo%2Fanti-censorship%2Fpluggable-transports%2Flyrebird/repository/tags?per_page=100' |
+            jq -r '.[].name | select(test("^lyrebird-[0-9]+(\\.[0-9]+)*$")) | sub("^lyrebird-"; "")' |
+            sort -V -r |
+            head -n1
+          )
 
           echo "tor_tag=tor-$tor_version" >> $GITHUB_OUTPUT
           echo "lyrebird_tag=lyrebird-$lyrebird_version" >> $GITHUB_OUTPUT
@@ -56,4 +64,3 @@ jobs:
             --tag $IMAGE:latest \
             --label org.opencontainers.image.version="$VERSION" \
             --push .
-
