@@ -1,5 +1,5 @@
 # === Stage 1: Build Tor and dependencies ===
-FROM debian:bullseye-slim AS builder-tor
+FROM debian:trixie-slim AS builder-tor
 
 ARG zlib_tag=v1.3.2
 ARG zlib_url=https://github.com/madler/zlib.git
